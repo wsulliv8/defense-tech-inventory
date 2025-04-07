@@ -1,0 +1,6 @@
+<%- include('../partials/header') %>
+<h1><%= title %></h1>
+<p><%= message %></p>
+<a href="/">Back to Home</a>
+<% if (referer) { %> | <a href="<%= referer %>">Back to Previous Page</a> <% }
+%> <%- include('../partials/footer') %>

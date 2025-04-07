@@ -1,0 +1,32 @@
+<%- include('../../partials/header') %>
+<h1><%= product.name %></h1>
+<% if (product.image_url) { %>
+<img src="<%= product.image_url %>" alt="<%= product.name %>" width="200" />
+<% } %>
+<dl>
+  <dt>Part Number:</dt>
+  <dd><%= product.part_number %></dd>
+  <dt>Description:</dt>
+  <dd><%= product.description || 'No description available.' %></dd>
+  <dt>Status:</dt>
+  <dd><%= product.status %></dd>
+  <dt>Category:</dt>
+  <dd><%= product.category_name || 'None' %></dd>
+  <dt>Created At:</dt>
+  <dd><%= new Date(product.created_at).toLocaleString() %></dd>
+</dl>
+<a href="/products">Back to Products</a> |
+<a href="/products/<%= product.id %>/edit">Edit Product</a>
+<form
+  action="/products/<%= product.id %>/delete"
+  method="POST"
+  style="display: inline"
+>
+  <button
+    type="submit"
+    onclick="return confirm('Are you sure you want to delete <%= product.name %>?');"
+  >
+    Delete Product
+  </button>
+</form>
+<%- include('../../partials/footer') %>

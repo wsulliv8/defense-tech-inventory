@@ -1,0 +1,11 @@
+<%- include('../../partials/header') %>
+<h1>Add New Category</h1>
+<form action="/categories" method="POST" enctype="multipart/form-data">
+  <label>Name: <input type="text" name="name" required /></label><br />
+  <label>Description: <textarea name="description"></textarea></label><br />
+  <label>Image: <input type="file" name="image" accept="image/*" /></label
+  ><br />
+  <button type="submit">Save</button>
+</form>
+<a href="/categories">Back to Categories</a>
+<%- include('../../partials/footer') %>

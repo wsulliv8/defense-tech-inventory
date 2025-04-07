@@ -1,0 +1,36 @@
+<%- include('../../partials/header') %>
+<h1>Edit <%= category.name %></h1>
+<form
+  action="/categories/<%= category.id %>"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <label
+    >Name:
+    <input
+      type="text"
+      name="name"
+      value="<%= category.name %>"
+      required /></label
+  ><br />
+  <label
+    >Description:
+    <textarea name="description">
+<%= category.description || '' %></textarea
+    ></label
+  ><br />
+  <label
+    >Current Image: <% if (category.image_url) { %>
+    <img
+      src="<%= category.image_url %>"
+      alt="<%= category.name %>"
+      width="100"
+    /><br />
+    <% } else { %> None<br />
+    <% } %> New Image:
+    <input type="file" name="image" accept="image/*" /> </label
+  ><br />
+  <button type="submit">Update</button>
+</form>
+<a href="/categories/<%= category.id %>">Back to Category</a>
+<%- include('../../partials/footer') %>

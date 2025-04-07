@@ -1,0 +1,25 @@
+.page-wrapper {
+  display: grid;
+  grid-template: 0.5fr 5fr 0.25fr/ 1fr 5fr;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar body"
+    "sidebar footer";
+  min-height: 100vh;
+}
+
+header {
+  grid-area: header;
+}
+
+.content {
+  grid-area: body;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+footer {
+  grid-area: footer;
+}

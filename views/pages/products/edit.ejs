@@ -1,0 +1,32 @@
+<%- include('../../partials/header') %>
+<h1>Edit <%= product.name %></h1>
+<form action="/products/<%= product.id %>" method="POST" enctype="multipart/form-data">
+  <label>Name: <input type="text" name="name" value="<%= product.name %>" required></label><br>
+  <label>Description: <textarea name="description"><%= product.description || '' %></textarea></label><br>
+  <label>Part Number: <input type="text" name="part_number" value="<%= product.part_number %>" required></label><br>
+  <label>Status:
+    <select name="status">
+      <option value="IN_PRODUCTION" <%= product.status === 'IN_PRODUCTION' ? 'selected' : '' %>>In Production</option>
+      <option value="PROTOTYPE" <%= product.status === 'PROTOTYPE' ? 'selected' : '' %>>Prototype</option>
+    </select>
+  </label><br>
+  <label>Category:
+    <select name="category_id">
+      <option value="">None</option>
+      <% categories.forEach(category => { %>
+        <option value="<%= category.id %>" <%= product.category_id === category.id ? 'selected' : '' %>><%= category.name %></option>
+      <% }); %>
+    </select>
+  </label><br>
+  <label>Current Image:
+    <% if (product.image_url) { %>
+      <img src="<%= product.image_url %>" alt="<%= product.name %>" width="100"><br>
+    <% } else { %>
+      None<br>
+    <% } %>
+    New Image: <input type="file" name="image" accept="image/*">
+  </label><br>
+  <button type="submit">Update</button>
+</form>
+<a href="/products/<%= product.id %>">Back to Product</a>
+<%- include('../../partials/footer') %>
