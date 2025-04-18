@@ -1,13 +1,13 @@
 <%- include('../../partials/header') %>
-<h1>All Categories</h1>
-<ul>
+<h1 class="mb-4">All Categories</h1>
+<ul class="list-group mb-4">
   <% if (categories.length > 0) { %> <% categories.forEach(category => { %>
-  <li>
+  <li class="list-group-item">
     <% if (category.image_url) { %>
     <img
       src="<%= category.image_url %>"
       alt="<%= category.name %>"
-      width="50"
+      class="category-img me-3"
     />
     <% } %>
     <a href="/categories/<%= category.id %>"
@@ -15,8 +15,9 @@
     >
   </li>
   <% }); %> <% } else { %>
-  <li>No categories found.</li>
+  <li class="list-group-item">No categories found.</li>
   <% } %>
 </ul>
-<a href="/categories/new">Add Category</a> |
-<a href="/products">Back to Products</a> <%- include('../../partials/footer') %>
+<a href="/categories/new" class="btn btn-primary">Add Category</a>
+<a href="/products" class="btn btn-secondary">Back to Products</a>
+<%- include('../../partials/footer') %>

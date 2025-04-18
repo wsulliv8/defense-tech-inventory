@@ -1,25 +1,111 @@
-.page-wrapper {
-  display: grid;
-  grid-template: 0.5fr 5fr 0.25fr/ 1fr 5fr;
-  grid-template-areas:
-    "sidebar header"
-    "sidebar body"
-    "sidebar footer";
-  min-height: 100vh;
+/* Override Bootstrap defaults */
+body {
+  background-color: #f8f9fa;
+  font-family: "Arial", sans-serif;
+  padding: 1rem;
 }
 
-header {
-  grid-area: header;
+h1 {
+  margin-left: 5rem;
 }
 
-.content {
-  grid-area: body;
+/* Sidebar Wrapper */
+.sidebar-wrapper {
+  position: relative;
 }
 
-.sidebar {
-  grid-area: sidebar;
+/* Sidebar */
+.offcanvas {
+  width: 250px !important; /* Fixed width */
+  background-color: #2f4f4f !important; /* Military green */
 }
 
-footer {
-  grid-area: footer;
+/* Ensure sidebar content isn't overlapped by toggler */
+.offcanvas-header {
+  padding-top: 3rem; /* Space for toggler button on mobile */
+}
+
+@media (min-width: 992px) {
+  .offcanvas {
+    transform: none !important; /* Always visible on large screens */
+    visibility: visible !important;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+  }
+
+  .main-content {
+    margin-left: 250px; /* Match sidebar width */
+  }
+}
+
+/* Toggler Button on Mobile */
+.sidebar-toggler {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1050; /* Above offcanvas */
+  background-color: #2f4f4f; /* Match sidebar color */
+  border: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.sidebar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Main Content */
+.main-content {
+  padding-top: 1rem;
+}
+
+/* Navbar Links */
+.nav-link {
+  color: #fff !important;
+}
+
+.nav-link:hover {
+  color: #b0c4de !important;
+}
+
+/* Customize Bootstrap */
+.btn-primary {
+  background-color: #2f4f4f;
+  border-color: #2f4f4f;
+}
+
+.btn-primary:hover {
+  background-color: #3c6767;
+  border-color: #3c6767;
+}
+
+.list-group-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.product-img,
+.category-img {
+  max-width: 50px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.show-img {
+  max-width: 300px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form .form-label {
+  font-weight: bold;
+}
+
+form .form-control,
+form .form-select {
+  max-width: 400px;
 }
